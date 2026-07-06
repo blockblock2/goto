@@ -1,0 +1,11 @@
+{
+  "name": "Go To Website",
+  "description": "Adds blocks to navigate to websites.",
+  "tags": ["editor"],
+  "userscripts": [
+    {
+      "url": "userscript.js",
+      "matches": ["projects"]
+    }
+  ]
+}
