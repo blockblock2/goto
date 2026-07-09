@@ -1,14 +1,8 @@
 export default async function ({ addon }) {
-  // Wait for Scratch editor to load
-  while (!window.Blockly || !window.Blockly.getMainWorkspace()) {
-    await new Promise((resolve) => setTimeout(resolve, 100));
-  }
-  
-  const workspace = window.Blockly.getMainWorkspace();
-  
+  // Function to inject our custom category
   function injectCategory() {
-    const toolbox = workspace.getToolbox();
-    if (!toolbox) return;
+    const workspace = window.Blockly.getMainWorkspace();
+    if (!workspace) return;
     
     let toolboxXml = workspace.options.languageTree;
     
@@ -22,12 +16,6 @@ export default async function ({ addon }) {
     newCategory.setAttribute('colour', '#0066ff');
     newCategory.setAttribute('secondaryColour', '#0052cc');
     
-    // Add blocks to category
-    newCategory.innerHTML = `
-      <block type="go_to_website_go_to_url"></block>
-      <block type="go_to_website_open_in_tab"></block>
-    `;
-    
     // Append to toolbox
     toolboxXml.appendChild(newCategory);
     
@@ -35,13 +23,10 @@ export default async function ({ addon }) {
     workspace.updateToolbox(toolboxXml);
   }
   
-  // Inject the category
-  injectCategory();
-  
-  // Re-inject on workspace updates
+  // Listen for workspace updates and inject category
   addon.tab.traps.on('workspaceUpdate', injectCategory);
   
-  // Add the blocks themselves
+  // Add the blocks
   addon.tab.addBlock("go to website %s", {
     args: ["URL"],
     callback: ({ URL }) => {
