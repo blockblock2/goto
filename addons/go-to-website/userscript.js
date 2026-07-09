@@ -1,8 +1,6 @@
 export default async function ({ addon }) {
-  addon.tab.addBlock("go to website %s", {
+  addon.tab.addBlock("go to website [URL]", {
     args: ["URL"],
-    displayName: "go to website [URL]",
-    category: "go-to-website",
     callback: ({ URL }) => {
       let url = String(URL).trim();
       if (!url.match(/^https?:\/\//i)) url = "https://" + url;
@@ -10,10 +8,8 @@ export default async function ({ addon }) {
     },
   });
 
-  addon.tab.addBlock("open website %s in new tab", {
+  addon.tab.addBlock("open website [URL] in new tab", {
     args: ["URL"],
-    displayName: "open website [URL] in new tab",
-    category: "go-to-website",
     callback: ({ URL }) => {
       let url = String(URL).trim();
       if (!url.match(/^https?:\/\//i)) url = "https://" + url;
