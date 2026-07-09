@@ -2,6 +2,7 @@
   "name": "Go To Website",
   "description": "Adds blocks to navigate to websites.",
   "category": "go-to-website",
+  "icon": "icon.svg",
   "tags": ["editor"],
   "credits": [
     {
