@@ -1,5 +1,5 @@
 export default async function ({ addon }) {
-  addon.tab.addBlock("go to website [URL]", {
+  addon.tab.addBlock("go to website %s", {
     args: ["URL"],
     callback: ({ URL }) => {
       let url = String(URL).trim();
@@ -8,7 +8,7 @@ export default async function ({ addon }) {
     },
   });
 
-  addon.tab.addBlock("open website [URL] in new tab", {
+  addon.tab.addBlock("open website %s in new tab", {
     args: ["URL"],
     callback: ({ URL }) => {
       let url = String(URL).trim();
