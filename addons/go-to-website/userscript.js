@@ -1,8 +1,7 @@
 export default async function ({ addon }) {
-  while (!window.scratchAddons.vm) await new Promise(r => setTimeout(r, 100));
-  const vm = window.scratchAddons.vm;
+  const vm = await addon.tab.getInternalVM();
   
-  vm.extensionManager.register(new class {
+  const ext = {
     getInfo() {
       return {
         id: "goToWebsite",
@@ -25,16 +24,18 @@ export default async function ({ addon }) {
         color2: "#0052cc",
         color3: "#003d99"
       };
-    }
+    },
     goToURL(args) {
       let url = String(args.URL).trim();
       if (!url.match(/^https?:\/\//i)) url = "https://" + url;
       window.location.href = url;
-    }
+    },
     goToURLNewTab(args) {
       let url = String(args.URL).trim();
       if (!url.match(/^https?:\/\//i)) url = "https://" + url;
       window.open(url, "_blank");
     }
-  });
+  };
+  
+  vm.extensionManager.register(ext);
 }
