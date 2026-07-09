@@ -1,6 +1,7 @@
 {
   "name": "Go To Website",
   "description": "Adds blocks to navigate to websites.",
+  "category": "go-to-website",
   "tags": ["editor"],
   "credits": [
     {
