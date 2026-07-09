@@ -2,6 +2,12 @@
   "name": "Go To Website",
   "description": "Adds blocks to navigate to websites.",
   "tags": ["editor"],
+  "credits": [
+    {
+      "name": "blockblock2",
+      "link": "https://scratch.mit.edu/users/blockblock2/"
+    }
+  ],
   "userscripts": [
     {
       "url": "userscript.js",
