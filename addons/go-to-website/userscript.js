@@ -1,5 +1,5 @@
 export default async function ({ addon }) {
-  const vm = await addon.tab.getInternalVM();
+  const vm = addon.vm;
   
   const ext = {
     getInfo() {
